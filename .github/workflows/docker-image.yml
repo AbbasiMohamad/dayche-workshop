@@ -22,7 +22,7 @@ jobs:
       
     - name: push docker container the Docker image
       continue-on-error: true
-      run: docker push localhost:4000/my-image-name:$(date +%s)
+      run: docker push localhost:4000/my-image-name:latest
    
     - name: start docker container the Docker image
       continue-on-error: true
