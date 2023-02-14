@@ -15,15 +15,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag localhost:4000/my-image-name:$(date +%s)
-      
+      run: docker build . --file Dockerfile --tag localhost:4000/my-image-name:$(date +%s) && \
+            docker push localhost:4000/my-image-name:$(date +%s)
     - name: stop docker container the Docker image
       continue-on-error: true
       run: docker container rm -f mypythonapp
       
-    - name: push docker container the Docker image
-      continue-on-error: true
-      run: docker push localhost:4000/my-image-name:$(date +%s)
+#    - name: push docker container the Docker image
+#      continue-on-error: true
+#      run: docker push localhost:4000/my-image-name:$(date +%s)
    
     - name: start docker container the Docker image
       continue-on-error: true
